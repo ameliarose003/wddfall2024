@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mario Bros Inspired Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #87CEEB; /* Sky blue background */
+            overflow: hidden; /* Hide scroll bars */
+        }
+
+        #gameCanvas {
+            background: #8B4513; /* Brown background for the ground */
+            display: block;
+            margin: 0 auto;
+            border: 2px solid #000; /* Black border around the game */
+        }
+
+        .coin {
+            width: 30px;
+            height: 30px;
+            background-color: gold;
+            border-radius: 50%; /* Make it circular */
+            position: absolute;
+        }
+
+        .step {
+            width: 100px;
+            height: 10px;
+            background-color: #654321; /* Dark brown for the steps */
+            position: absolute;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        #score {
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            #gameCanvas {
+                width: 80vw; /* 80% of viewport width */
+                height: 400px; /* Fixed height */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mario {
+                width: 40px; /* Smaller Mario */
+                height: 40px;
+            }
+
+            .coin {
+                width: 20px; /* Smaller coins */
+                height: 20px;
+            }
+
+            .step {
+                width: 80px; /* Smaller steps */
+            }
+
+            #score {
+                font-size: 20px; /* Smaller score text */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px; /* Smaller header font size */
+            }
+
+            #score {
+                font-size: 18px; /* Smaller score text */
+            }
+
+            #gameCanvas {
+                width: 100vw; /* Full width for mobile */
+                height: 300px; /* Smaller height for mobile */
+            }
+
+            .mario {
+                width: 30px; /* Even smaller Mario */
+                height: 30px;
+            }
+
+            .coin {
+                width: 15px; /* Even smaller coins */
+                height: 15px;
+            }
+
+            .step {
+                height: 8px; /* Smaller steps */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Super Mario Bros Inspired Game</h1>
+<div id="score">Score: 0</div>
+<canvas id="gameCanvas" width="800" height="400"></canvas>
+
+<script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const mario = {
+        x: 50,
+        y: 350,
+        width: 50,
+        height: 50,
+        dy: 0,
+        gravity: 0.5,
+        jumpPower: -15, // Increased jump power for a higher jump
+        isJumping: false,
+        speed: 5,
+        acceleration: 1, // Speed increase
+        airControl: 1 // Control while in the air
+    };
+
+    const coins = [];
+    const steps = [];
+    let score = 0;
+    let gameInterval;
+
+    function startGame() {
+        createCoins(); // Create coins when the game starts
+        createSteps(); // Create steps when the game starts
+        gameInterval = setInterval(updateGameArea, 20);
+        document.addEventListener('keydown', handleKeyPress);
+        document.addEventListener('keyup', stopMario);
+    }
+
+    function createCoins() {
+        for (let i = 0; i < 5; i++) {
+            const coin = {
+                x: Math.random() * (canvas.width - 30),
+                y: Math.random() * (canvas.height - 50),
+                width: 30,
+                height: 30
+            };
+            coins.push(coin);
+            drawCoin(coin); // Draw coin immediately
+        }
+    }
+
+    function createSteps() {
+        // Create steps that move back and forth
+        for (let i = 0; i < 2; i++) {
+            const step = {
+                x: 200 + i * 120,
+                y: 300 - i * 40,
+                width: 100,
+                height: 10,
+                direction: 1, // 1 for right, -1 for left
+                speed: 2 // Speed of movement
+            };
+            steps.push(step);
+        }
+
+        // Create steps that move up and down
+        for (let i = 0; i < 2; i++) {
+            const step = {
+                x: 600 + i * 120,
+                y: 200 + i * 50,
+                width: 100,
+                height: 10,
+                direction: 1, // 1 for up, -1 for down
+                speed: 1, // Speed of movement
+                verticalMovement: true // Indicates that this step moves vertically
+            };
+            steps.push(step);
+        }
+    }
+
+    function drawCoin(coin) {
+        ctx.fillStyle = 'gold';
+        ctx.beginPath();
+        ctx.arc(coin.x + coin.width / 2, coin.y + coin.height / 2, coin.width / 2, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    function drawStep(step) {
+        ctx.fillStyle = '#654321'; // Dark brown
+        ctx.fillRect(step.x, step.y, step.width, step.height);
+    }
+
+    function handleKeyPress(e) {
+        if (e.code === 'Space' && !mario.isJumping) {
+            mario.isJumping = true;
+            mario.dy = mario.jumpPower; // Use the increased jump power
+        }
+        if (e.code === 'ArrowRight') {
+            mario.x += mario.speed + mario.acceleration; // Increase speed
+        }
+        if (e.code === 'ArrowLeft') {
+            mario.x -= mario.speed + mario.acceleration; // Increase speed
+        }
+        // Allow horizontal movement while in the air
+        if (mario.isJumping) {
+            if (e.code === 'ArrowRight') {
+                mario.x += mario.airControl; // Move right in the air
+            }
+            if (e.code === 'ArrowLeft') {
+                mario.x -= mario.airControl; // Move left in the air
+            }
+        }
+        // Prevent Mario from going off-screen
+        if (mario.x < 0) mario.x = 0;
+        if (mario.x > canvas.width - mario.width) mario.x = canvas.width - mario.width;
+    }
+
+    function stopMario(e) {
+        if (e.code === 'ArrowRight' || e.code === 'ArrowLeft') {
+            mario.acceleration = 0; // Stop acceleration when key is released
+        }
+    }
+
+    function updateGameArea() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        updateMario();
+        checkCoinCollision();
+        checkStepCollision(); // Check for collisions with steps
+        drawCoins(); // Draw all coins each frame
+        drawSteps(); // Draw all steps each frame
+        drawMario();
+        drawScore();
+        moveSteps(); // Move the steps each frame
+    }
+
+    function updateMario() {
+        if (mario.isJumping) {
+            mario.y += mario.dy;
+            mario.dy += mario.gravity;
+            if (mario.y >= 350) {
+                mario.y = 350;
+                mario.isJumping = false;
+                mario.dy = 0;
+            }
+        }
+    }
+
+    function drawMario() {
+        ctx.fillStyle = 'red';
+        ctx.fillRect(mario.x, mario.y, mario.width, mario.height);
+    }
+
+    function checkCoinCollision() {
+        for (let i = coins.length - 1; i >= 0; i--) {
+            const coin = coins[i];
+            if (
+                mario.x < coin.x + coin.width &&
+                mario.x + mario.width > coin.x &&
+                mario.y < coin.y + coin.height &&
+                mario.y + mario.height > coin.y
+            ) {
+                coins.splice(i, 1); // Remove the coin
+                score++;
+                drawCoin(coin);
+            }
+        }
+    }
+
+    function drawCoins() {
+        for (let coin of coins) {
+            drawCoin(coin); // Draw each coin
+        }
+    }
+
+    function drawSteps() {
+        for (let step of steps) {
+            drawStep(step); // Draw each step
+        }
+    }
+
+    function moveSteps() {
+        for (let step of steps) {
+            if (step.verticalMovement) {
+                // Move up and down
+                step.y += step.direction * step.speed;
+                if (step.y <= 100 || step.y >= 300) { // Change direction at these limits
+                    step.direction *= -1;
+                }
+            } else {
+                // Move back and forth
+                step.x += step.direction * step.speed;
+                if (step.x <= 200 || step.x >= 320) { // Change direction at these limits
+                    step.direction *= -1;
+                }
+            }
+        }
+    }
+
+    function checkStepCollision() {
+        for (let step of steps) {
+            if (
+                mario.x < step.x + step.width &&
+                mario.x + mario.width > step.x &&
+                mario.y + mario.height < step.y + step.height &&
+                mario.y + mario.height + mario.dy >= step.y
+            ) {
+                mario.y = step.y - mario.height; // Place Mario on top of the step
+                mario.isJumping = false;
+                mario.dy = 0;
+                break; // Break to avoid stacking on multiple steps
+            }
+        }
+    }
+
+    function drawScore() {
+        document.getElementById('score').innerText = `Score: ${score}`;
+    }
+
+    startGame();
+</script>
+
+</body>
+</html>
