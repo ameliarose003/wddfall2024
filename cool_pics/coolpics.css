@@ -34,7 +34,6 @@ header nav {
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     align-content: center;
-    
 }
 
 header nav a {
