@@ -6,11 +6,13 @@
         <meta name="author" content="Ami Halsey">
         <title>cool pics</title>
         <link href="coolpics.css" rel="stylesheet">
-        <script src="coolpics.js"></script> 
+        <script src="coolpics.js" defer></script> 
     </head>
     <body>
+        <!-- create a div and button to exit out of photo -->
         <header>
             <h1>Cool Pics :) </h1>
+            <button id="menu" aria-label="Toggle navigation menu">Menu</button>
             <nav class="navbar">
                 <a href="#home">Home</a>
                 <a href="#people">People</a>
@@ -20,6 +22,11 @@
             </nav>
         </header>
         <main>
+            <div class="viewer hide">
+                <button class="close-viewer">X</button>
+                <img src="coolpic_img.jpeg" alt="alt description">
+            </div>
+              
             <section class="gallery">
                 <figure><img src="coolpic_img.jpeg" alt="cool picture"></figure>
                 <figure><img src="coolpic_img.jpeg" alt="cool picture"></figure>
