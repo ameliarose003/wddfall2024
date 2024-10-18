@@ -14,15 +14,15 @@
         <h1>Kids Read For Fun</h1>
         <nav>
             <ul>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Archive</a></li>
-                <li><a href="#">Search</a></li>
+                <li><a href="#" aria-label="About the book review site">About</a></li>
+                <li><a href="#" aria-label="All book reviews in one place">Archive</a></li>
+                <li><a href="#" aria-label="Search for the next book you are thinking of reading">Search</a></li>
             </ul>
         </nav>
     </header>
     <main id="maincontent">
         <div class="books">
-            <section class="book1">
+            <section>
                 <ul>
                     <li>Publish date</li>
                     <li>Age range</li>
@@ -32,11 +32,11 @@
                 <div>
                     <h2>The Way Of Kings:</h2>
                     <h3>Stormlight Archive Book 1</h3>
-                    <img src="way_of_kings.jpeg" alt="Way of Kings book" width="#" height="#">
+                    <img src="way_of_kings.jpeg" alt="Way of Kings book Stormlight Archive Book 1" width="#" height="#">
                     <p>Rating info, what the rater thinks of the book</p>
                 </div>
             </section>
-            <section class="book2">
+            <section>
                 <ul>
                     <li>Publish date</li>
                     <li>Age range</li>
@@ -46,14 +46,18 @@
                 <div>
                     <h2>Words Of Radiance:</h2>
                     <h3>Stormlight Archive Book 2</h3>
-                    <img src="words_of_radiance.jpeg" alt="second Book Name" width="#" height="#">
+                    <img src="words_of_radiance.jpeg" alt="Words of Radiance Stormlight Archive Book 2" width="#" height="#">
                     <p>Rating info, what the rater thinks of the book</p>
                 </div>
 
             </section>
         </div>
         <div class="filters">
-            <p>This will be filters</p>
+            <label for="genre">Filter by genre:</label>
+            <select id="genre" name="genre">
+                <option value="fantasy">Fantasy</option>
+                <option value="sci-fi">Science Fiction</option>
+            </select>
         </div>
     </main>
 </body>
