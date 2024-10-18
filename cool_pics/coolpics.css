@@ -96,6 +96,10 @@ img {
         grid-template-columns: 1fr 1fr;
     }
 
+    nav.navbar {
+        gap: 3rem;  
+    }
+
 }
 
 @media screen and (max-width: 700px){
