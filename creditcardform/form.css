@@ -76,6 +76,14 @@ button {
     margin-left: 285px;
     margin-top: 20px;
     border-radius: 4px;
+    cursor: pointer;
+    background-color: rgb(255, 138, 54);
+    /* border: 2px solid #585757; */
+    /* transition: background-color 0.3s ease; What does this do? */
+}
+
+button:hover {
+    background-color: #45a049;
 }
 
 #card-number-container {
@@ -130,6 +138,8 @@ input {
     margin-bottom: 10px;
     padding: 4px;
     border-radius: 4px;
+    /* border: 1px solid #828181; */
+
 }
 
 #amount {
@@ -168,4 +178,8 @@ img {
 
 .hidden {
     display: none;
+}
+
+@media screen {
+    
 }
