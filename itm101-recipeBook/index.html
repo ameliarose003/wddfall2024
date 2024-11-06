@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Recipe Book</title>
+    <link rel="stylesheet" href="something_fun.css">
+    <script src="something_fun.js" type = "module"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Recipe Book</h1>
+
+        <!-- Authentication Section -->
+        <div id="auth-section">
+            <button id="login-btn">Sign in with Google</button>
+            <button id="logout-btn" style="display: none;">Logout</button>
+        </div>
+
+        <h2>Add Your Own Recipe</h2>
+        <div id="recipe-form" style="display: none;">
+            <form id="recipe-form" enctype="multipart/form-data">
+                <label for="recipe-name">Recipe Name:</label>
+                <input type="text" id="recipe-name" placeholder="e.g. Chocolate Cake" required>
+
+                <label for="recipe-ingredients">Ingredients:</label>
+                <textarea id="recipe-ingredients" placeholder="List all ingredients" required></textarea>
+
+                <label for="recipe-steps">Steps:</label>
+                <textarea id="recipe-steps" placeholder="Step-by-step instructions" required></textarea>
+
+                <!-- <label for="recipe-image">Upload a Recipe Image:</label>
+                <input type="file" id="recipe-image" accept="image/*" required> -->
+
+                <button type="submit">Add Recipe</button>
+            </form>
+        </div>
+
+        <h2>Your Recipes</h2>
+        <div id="recipes-container"></div>
+    </div>
+
+    <!-- <script src="/js/script.js"></script> -->
+</body>
+</html>
+
+
+<!-- <div class="container">
+    <h1>Interactive Recipe Book</h1>
+
+    <h2>Add Your Own Recipe</h2>
+    <form id="recipe-form">
+        <label for="recipe-name">Recipe Name:</label>
+        <input type="text" id="recipe-name" placeholder="e.g. Chocolate Cake" required>
+
+        <label for="recipe-ingredients">Ingredients:</label>
+        <textarea id="recipe-ingredients" placeholder="List all ingredients" required></textarea>
+
+        <label for="recipe-steps">Steps:</label>
+        <textarea id="recipe-steps" placeholder="Step-by-step instructions" required></textarea>
+
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <h2>Your Recipes</h2>
+    <div id="recipes-container"></div>
+</div> -->
+
+<!-- <script src="/js/script.js"></script> -->
+<!-- </body> -->
+<!-- </html> -->
