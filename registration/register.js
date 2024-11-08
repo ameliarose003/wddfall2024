@@ -15,7 +15,6 @@
 // """End of assignment rubric"""
 
 import addParticipent from './template.mjs'
-let participantCount = 1
 
 
 // Get the button to click and show it does in the console.
@@ -28,7 +27,8 @@ participant_btn.addEventListener("click", () => {
     console.log("Participant button clicked!")
     // Now it's time to make the button do something for the user.
     // Get participant template
-    participantCount = addParticipent()
+    participantCount = addParticipent();
+    addParticipent();
     //// console.log(participant_template)
     //// participant_btn.insertAdjacentElement('beforebegin', participant_template)
 

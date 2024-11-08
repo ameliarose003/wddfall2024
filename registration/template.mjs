@@ -1,4 +1,6 @@
 // Add the new html(participant template)
+let participantCount = 1; // or wherever you want to initialize this
+
 export default function addParticipent() {
     // participantCount++ adds 1 participant to the counter. ++ does that.
     participantCount++
