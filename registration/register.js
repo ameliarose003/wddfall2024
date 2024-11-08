@@ -14,8 +14,9 @@
 
 // """End of assignment rubric"""
 
-import addParticipent from './template.mjs'
+let participantCount = 0
 
+import addParticipent from './template.mjs'
 
 // Get the button to click and show it does in the console.
 // const participation_btn is creating a variable that connects to the "add" id, which is the button in the html
@@ -28,7 +29,9 @@ participant_btn.addEventListener("click", () => {
     // Now it's time to make the button do something for the user.
     // Get participant template
     participantCount = addParticipent();
-    addParticipent();
+
+
+    // addParticipent();
     //// console.log(participant_template)
     //// participant_btn.insertAdjacentElement('beforebegin', participant_template)
 
@@ -52,6 +55,7 @@ form.addEventListener('submit', load)
 
 function load(event) {
     event.preventDefault();
+    // addParticipent();
     // function for summing the fees
     const sum = totalFees()
     // pull in the adult_name class
@@ -87,7 +91,7 @@ function totalFees() {
 
 function successTemplate(info, participantCount, sum) {
     const receipt = `
-        <h1> Receipt</h>
+        <h1> Receipt</h1>
         <p>${info}, you have ${participantCount} participants. Your price is $${sum}
         
         `
