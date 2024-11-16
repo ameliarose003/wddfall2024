@@ -1,0 +1,1 @@
+import recipe from './recipes.mjs'
