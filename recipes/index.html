@@ -18,7 +18,8 @@
 
     <title>Recipe Book</title>
     <link rel="stylesheet" href="recipes.css">
-    <script src="main.js" defer type="module"></script>
+    <script src="recipes.mjs" type="module"></script>
+    <script src="main.js" type="module"></script>
     <!-- do I need to add another script for the recipes.mjs? I don't think so I do...? -->
 </head>
 <body>
@@ -27,12 +28,12 @@
         <h1>Recipe Book</h1>
     </header>
     <main>
-        <div id="search">
+        <form id="search">
             <input id="search_input" type="text" name="search_input" value="" required="" placeholder="Find a recipe">
-            <button for="search_input" type="button"><img src="images/search.svg" alt="search button" width="50" height="25"></button>
-        </div>
+            <button for="search_input" type="submit"><img src="images/search.svg" alt="search button" width="50" height="25"></button>
+        </form>
 		<section  id="recipe">
-            <img src="images/sweet-potato-waffle-md.jpg" alt="Savory waffles made with Sweet potato with a hint of Ginger" width="55%">
+            <!-- <img src="images/sweet-potato-waffle-md.jpg" alt="Savory waffles made with Sweet potato with a hint of Ginger" width="55%">
             <div id="recipeInfo"> 
                 <div>
                     <p class="recipeTag">Side</p>
@@ -45,11 +46,11 @@
                     <span aria-hidden="true" class="icon-star">⭐</span>
                     <span aria-hidden="true" class="icon-star">⭐</span>
                     <span aria-hidden="true" class="icon-star">⭐</span>
-                    <span aria-hidden="true" class="icon-star-empty">⭐</span>
+                    <span aria-hidden="true" class="icon-star">⭐</span>
                     <span aria-hidden="true" class="icon-star-empty">☆</span>
                 </span>
                 <h3>Savory waffles made with Sweet potato with a hint of Ginger</h3>
-            </div>
+            </div> -->
         </section>
         <!-- name: 'Sweet Potato Waffles', -->
         <!-- tags: ['Waffles', 'Sweet Potato', 'Side'], -->
