@@ -89,6 +89,12 @@ article.featured {
     padding-bottom: 55px;
 }
 
+#goodiesOutput {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
 article {
     padding: 30px;
 }
@@ -133,8 +139,8 @@ aside {
 
 button {
     cursor: pointer;
-    background-color: #A8D5BA;
-    color: #543a2d;
+    background-color: #b3957c;
+    color: #3a2722;
     border-color: #6d4e3f;
     border-radius: 4px;
 }
@@ -197,16 +203,18 @@ footer div {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    
+    text-align: center;    
 }
+/* .goodie_aside {
+    border-left: #543a2d;
+} */
 .goodie_basket div:nth-child(1) {
     grid-column: span 3;
     flex-direction: row;
 }
 
 .goodie_basket img{
-    max-width: 500px;
+    max-width: 300px;
     box-shadow: none;
 }
 

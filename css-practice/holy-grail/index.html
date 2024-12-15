@@ -49,49 +49,50 @@
                         that the sweetest moments are shared with those we hold dear. 
                         May your holidays be as delightful as the first bite of a perfectly baked treat!
                     </p>
-                    <button>Add to basket</button>
+                    <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
                 </div>
             </article>
-            <article>
-                <img src="bakery-images/strawberry_danish.webp" alt="Strawberry Danish">
-                <div>
-                    <h3>Strawberry Danish</h3>
-                    <p>
-                        A flaky, buttery pastry filled with rich cream cheese and topped with fresh, sweet strawberries. Finished with a light drizzle of icing for the perfect balance of tart and sweet.
-                    </p>
-                    <p><strong>$3.25</strong></p>
-                    <button>Add to basket</button>
-                </div>
-            </article>
-            <article>
-                <img src="bakery-images/Chocolate_chip_cookie.webp" alt="Chocolate chip cookie">
-                <div>
-                    <h3>Chocolate chip cookie</h3>
-                    <p>Soft and chewy cookies filled with chocolate chips.</p>
-                    <p><strong>$1.50</strong></p>
-                    <button>Add to basket</button>
-                </div>
-            </article>
-            <article>
-                <img src="bakery-images/croissant.webp" alt="croissant">
-                <div>
-                    <h3>Croissant</h3>
-                    <p>Buttery, flaky croissant baked to perfection.</p>
-                    <p><strong>$3.00</strong></p>
-                    <button>Add to basket</button>
-                </div>
-            </article>
-
+            <div id="goodiesOutput">
+                <article>
+                    <img src="bakery-images/strawberry_danish.webp" alt="Strawberry Danish">
+                    <div>
+                        <h3>Strawberry Danish</h3>
+                        <p>
+                            A flaky, buttery pastry filled with rich cream cheese and topped with fresh, sweet strawberries.
+                        </p>
+                        <p class="price"><strong>$3.25</strong></p>
+                        <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                    </div>
+                </article>
+                <article>
+                    <img src="bakery-images/Chocolate_chip_cookie.webp" alt="Chocolate chip cookie">
+                    <div>
+                        <h3>Chocolate chip cookie</h3>
+                        <p>Soft and chewy cookies filled with chocolate chips.</p>
+                        <p class="price"><strong>$1.50</strong></p>
+                        <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                    </div>
+                </article>
+                <article>
+                    <img src="bakery-images/croissant.webp" alt="croissant">
+                    <div>
+                        <h3>Croissant</h3>
+                        <p>Buttery, flaky croissant baked to perfection.</p>
+                        <p onclick="calculate()" class="price"><strong>$3.00</strong></p>
+                        <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                    </div>
+                </article>
+            </div>
         </div>
         <aside>
             <ul>
                 <li>
                     <h3>My Goodies:</h3>
-                    <p>Javascripted list of goodies clicked on</p>
+                    <p class="goodieName">Javascripted list of goodies clicked on</p>
                 </li>
                 <li>
                     <h3>Total:</h3>
-                    <p>Purchase total $_.00</p>
+                    <p class="total">Purchase total $_.00</p>
                 </li>
             </ul>
             <button>Order Goodies</button>
