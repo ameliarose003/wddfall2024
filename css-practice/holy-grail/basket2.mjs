@@ -20,7 +20,7 @@ function addToBasket(name) {
         console.log("Goodie found:", foundGoodie);
         globalVariable_basket_Array.push(foundGoodie);
 
-        const price = parseFloat(foundGoodie.price.replace('$',''));
+        const price = foundGoodie.price
         globalVariable_price_Array.push(price);
         localGoodies();
         calculate();
@@ -65,7 +65,7 @@ function calculate() {
     // const prices = document.querySelectorAll(".price");
     // Now we are going over each prices and adding them together
 
-    let sum = globalVariable_price_Array.reduce((total, item) => total + price, 0);
+    let sum = globalVariable_price_Array.reduce((total, price) => total + price, 0);
 
     const totalElement = document.querySelector('.total');
     if (totalElement) {
@@ -100,7 +100,7 @@ function renderItems() {
     // }   
 
     // To render the names and prices ......
-    outputName.innerHTML = globalVariable_basket_Array.map(item => `<p>${item.name}</p>`).join('');
+    outputName.innerHTML = globalVariable_basket_Array.map(item => `<p>${item.name}</p>`).join('') || 'Please choose a goodie';
     const total = globalVariable_price_Array.reduce((total, price) => total + price, 0);
     outputTotal.textContent = `$${total.toFixed(2)}`;
 };
@@ -126,5 +126,14 @@ function init() {
     readLocalStorage();
     renderItems();
     calculate();
+    const basketButton = document.getElementById('orderBtn');
+    if (!basketButton) return;
+    basketButton.addEventListener('click', () => {
+        globalVariable_basket_Array = [];
+        globalVariable_price_Array = [];
+        localStorage.clear();
+        renderItems();
+        alert('Your Order Has Been Placed!')
+    })
 }
 init();

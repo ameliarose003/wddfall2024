@@ -4,7 +4,7 @@
 // 4) the goodies also need to be added to the goodie basket web page.
 
 import bakeryMenu from './goodie.mjs';
-// import "./basket2.mjs";
+import "./basket2.mjs";
 
 // 1) Create a function to generate a random number that will be used to get a random baked good.
 function random(num) {
@@ -58,7 +58,7 @@ function goodieTemplate(bakeryMenu) {
             <div id="goodieInfo">
                 <h3>${bakeryMenu.name}</h3>
                 <p>${bakeryMenu.description}</p>
-                <p onclick="calculate('${bakeryMenu.price}" >${bakeryMenu.price}</p>
+                <p onclick="calculate('${bakeryMenu.price}" >$${bakeryMenu.price.toFixed(2)}</p>
                 <button onclick="addToBasket('${bakeryMenu.name}')" >Add to basket</button>
             </div>
         </article>

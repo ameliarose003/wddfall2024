@@ -49,7 +49,7 @@
                         that the sweetest moments are shared with those we hold dear. 
                         May your holidays be as delightful as the first bite of a perfectly baked treat!
                     </p>
-                    <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                    <button onclick="addToBasket('Holiday Special')" class="basket">Add to basket</button>
                 </div>
             </article>
             <div id="goodiesOutput">
@@ -61,7 +61,7 @@
                             A flaky, buttery pastry filled with rich cream cheese and topped with fresh, sweet strawberries.
                         </p>
                         <p class="price"><strong>$3.25</strong></p>
-                        <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                        <button onclick="addToBasket('Strawberry Danish')" class="basket">Add to basket</button>
                     </div>
                 </article>
                 <article>
@@ -70,7 +70,7 @@
                         <h3>Chocolate chip cookie</h3>
                         <p>Soft and chewy cookies filled with chocolate chips.</p>
                         <p class="price"><strong>$1.50</strong></p>
-                        <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                        <button onclick="addToBasket('Chocolate Chip Cookies')" class="basket">Add to basket</button>
                     </div>
                 </article>
                 <article>
@@ -79,7 +79,7 @@
                         <h3>Croissant</h3>
                         <p>Buttery, flaky croissant baked to perfection.</p>
                         <p onclick="calculate()" class="price"><strong>$3.00</strong></p>
-                        <button onclick="addToBasket('${bakeryMenu.name}')" class="basket">Add to basket</button>
+                        <button onclick="addToBasket('Croissant')" class="basket">Add to basket</button>
                     </div>
                 </article>
             </div>
@@ -88,14 +88,16 @@
             <ul>
                 <li>
                     <h3>My Goodies:</h3>
-                    <p class="goodieName">Javascripted list of goodies clicked on</p>
+                    <p class="goodieName">Please choose a goodie</p>
                 </li>
                 <li>
                     <h3>Total:</h3>
-                    <p class="total">Purchase total $_.00</p>
+                    <p class="total">$0.00</p>
                 </li>
             </ul>
-            <button>Order Goodies</button>
+            <a href="goodies.html">        
+                <button>Order Goodies</button>
+            </a>
         </aside>
         <footer>
             <p>copyright 2024 The Cottage Bakery</p>
